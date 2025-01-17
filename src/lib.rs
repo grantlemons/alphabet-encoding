@@ -53,22 +53,15 @@ pub fn encode(str: String) -> String {
 pub fn decode(str: String) -> Result<String> {
     let str_chars: Vec<char> = str.chars().collect();
 
-    let replacements: Vec<_> = str
+    Ok(str
         .match_indices('x')
-        .map(|(i, _)| -> Result<(String, char)> {
+        .map(|(i, _)| -> Result<(String, String)> {
             let chars: String = str_chars[i..=i + 2].iter().collect();
             let encoded = EncodedChar::from_str(&chars)?;
-            Ok((chars, encoded.0))
+            Ok((chars, encoded.0.to_string()))
         })
         .filter_map(Result::ok)
-        .collect();
-
-    let res = replacements
-        .into_iter()
-        .map(|(chrs, rl)| (chrs, rl.to_string()))
         .fold(str.to_owned(), |str, (replace, replacement)| {
             str.replace(&replace, &replacement)
-        });
-
-    Ok(res)
+        }))
 }
