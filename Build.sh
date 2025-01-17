@@ -14,7 +14,7 @@ project=`echo ${PROJECT}|tr A-Z a-z`
 
 # you are welcome to change the rust invocation, but this might alter the path
 # required for the last ln(1) command in the script
-cargo build --${PROFILE:-release} --offline --bin ${project}
+cargo build --${PROFILE:-release} --bin ${project}
 
 # purge, just in case it is a directory for some bizarre reason.
 rm -rf ${PROJECT}
