@@ -1,23 +1,11 @@
-mod cli_args;
-
-use std::{fmt::Display, str::FromStr};
-
 use anyhow::{Context, Result};
-pub use cli_args::*;
+use std::str::FromStr;
 
 fn should_encode(c: char) -> bool {
     !(c != 'x' && c != ':' && c != '\\' && c.is_ascii_graphic() && !c.is_ascii_whitespace())
 }
 
-pub struct ProgramOutput(pub String);
-impl Display for ProgramOutput {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, ":{}:", self.0)
-    }
-}
-
-pub struct EncodedChar(char);
-
+struct EncodedChar(char);
 impl ToString for EncodedChar {
     fn to_string(&self) -> String {
         format!("x{:02x}", self.0 as u8)

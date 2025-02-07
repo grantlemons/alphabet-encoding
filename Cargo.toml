@@ -1,7 +1,15 @@
 [package]
-name = "alphabetencoding"
+name = "alphabet-encoding"
 version = "0.1.0"
 edition = "2021"
+
+[lib]
+name = "alphabet_encoding"
+path = "src/lib.rs"
+
+[[bin]]
+name = "alphabetencoding"
+path = "src/main.rs"
 
 [dependencies]
 anyhow = "1.0.95"

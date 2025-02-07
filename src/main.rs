@@ -1,11 +1,15 @@
 use std::{
+    fmt::Display,
     io::{Read, Write},
     path::Path,
 };
 
-use alphabetencoding::*;
+use alphabet_encoding::*;
 use anyhow::{Context, Result};
 use clap::Parser;
+
+mod cli_args;
+use cli_args::*;
 
 fn main() -> Result<()> {
     let _args = CliArgs::parse();
@@ -37,4 +41,11 @@ fn write_file(p: &Path, contents: String) -> Result<()> {
         .context("Unable to write to file!")?;
 
     Ok(())
+}
+
+pub struct ProgramOutput(pub String);
+impl Display for ProgramOutput {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, ":{}:", self.0)
+    }
 }

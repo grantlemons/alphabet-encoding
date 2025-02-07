@@ -3,7 +3,7 @@
 version = 4
 
 [[package]]
-name = "alphabetencoding"
+name = "alphabet-encoding"
 version = "0.1.0"
 dependencies = [
  "anyhow",
