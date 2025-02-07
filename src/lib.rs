@@ -6,7 +6,7 @@ use anyhow::{Context, Result};
 pub use cli_args::*;
 
 fn should_encode(c: char) -> bool {
-    !(c != 'x' && c != ':' && c.is_ascii_graphic() && !c.is_ascii_whitespace())
+    !(c != 'x' && c != ':' && c != '\\' && c.is_ascii_graphic() && !c.is_ascii_whitespace())
 }
 
 pub struct ProgramOutput(pub String);
