@@ -9,11 +9,3 @@ edition = "2021"
 [lib]
 name = "alphabet_encoding"
 path = "src/lib.rs"
-
-[[bin]]
-name = "alphabetencoding"
-path = "src/main.rs"
-
-[dependencies]
-anyhow = "1.0.95"
-clap = { version = "4.5.26", features = ["derive"] }
