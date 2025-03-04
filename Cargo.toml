@@ -5,7 +5,3 @@ repository = "https://github.com/grantlemons/alphabet-encoding"
 license = "AGPL-3.0-only"
 version = "0.1.1"
 edition = "2021"
-
-[lib]
-name = "alphabet_encoding"
-path = "src/lib.rs"
